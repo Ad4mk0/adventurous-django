@@ -71,7 +71,7 @@ use docker:
 
 ## Usage/Examples
 Lets say we called:
-```http
+```bash
 POST http://127.0.0.1:8000/import
 ```
 on:
@@ -100,7 +100,7 @@ on:
 These objects should be stored.
 
 Now, if we call:
-```http
+```bash
 GET http://127.0.0.1:8000/detail/AttributeValue/
 ```
 it would get us a following response:
@@ -122,7 +122,7 @@ it would get us a following response:
 ]
 ```
 If we go further:
-```http
+```bash
 GET http://127.0.0.1:8000/detail/AttributeValue/2
 ```
 the response is:
