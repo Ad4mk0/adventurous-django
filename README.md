@@ -15,7 +15,7 @@ Kód som písal na **Windows 10, Python 3.10.2** + venv -> docker, napriek tomu,
 
 #### Import items
 
-```http
+```bash
   POST http://127.0.0.1:8000/import
 ```
 
@@ -27,7 +27,7 @@ Use for data importing.
 
 #### Get items
 
-```http
+```bash
   GET http://127.0.0.1:8000/detail/{name}/
 ```
 
@@ -39,7 +39,7 @@ Returns all instances for specific Object name.
 
 #### Get item
 
-```http
+```bash
   GET http://127.0.0.1:8000/detail/{name}/{id}
 ```
 
