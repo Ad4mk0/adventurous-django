@@ -47,3 +47,5 @@ def serialize(name: str, que):
     if name == 'ProductAttributes':
         return ProductAttributesSerializer(que, many=True)
     return None
+
+#TODO: make this all using sys + getattr
