@@ -8,7 +8,7 @@
 
 *test_data.json* som považoval za valídny vstup a tiež aj objekty tohoto json súboru za valídne. *id atribút* som u objektov nepovažoval za *primary_key*. 
 Využitá je základná *sqllite db* ktorá je súčasťou django framework, použitie Postgres by možno umožnilo krajšie ukladanie pomocou *ListField* a nie *JsonField*.
-Kód som písal na **Windows 10, Python 3.10.2** + venv -> docker, napriek tomu, som ponechal nie moc lichotivé *if statements* voči *Match - Case* .
+Kód som písal na **Windows 10, Python 3.10.2** + venv -> docker, napriek tomu, som kvôli čitateľnosti ponechal *if statements* a nie *Match - Case* (zabijanie mravca Glock-om).
 
 
 ## API Reference
@@ -21,7 +21,7 @@ Kód som písal na **Windows 10, Python 3.10.2** + venv -> docker, napriek tomu,
 
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
-| `Json Content` | `json` | **Required**. JSON formated data  |
+| `Json Content` | `json` |  JSON formated data  |
 
 Use for data importing.
 
@@ -66,6 +66,16 @@ The easiest and cleaniest way is just to,
 use docker:
 ```bash
   docker compose up
+```
+
+or:
+```bash
+# make sure you have approppriate Python version
+pip install -r requirements.txt
+python manage.py makemigrations whys
+python manage.py migrate
+python manage.py runserver
+# server is now running on localhost
 ```
 
 

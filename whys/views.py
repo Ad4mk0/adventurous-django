@@ -11,7 +11,7 @@ from .serializers import ProductImageSerializer, ProductSerializer
 from rest_framework.decorators import api_view
 from rest_framework import status
 
-@api_view(['GET', 'POST'])
+@api_view(['POST'])
 def parser(request):
     '''Loads all the data into apropriate models'''
     if request.method == 'POST':
@@ -70,7 +70,7 @@ def close_detail(request, name:str, id:int):
     '''Returns JsonResponse with QuerySet of specified Object name and id'''
     # QuerySet to vracia aj preto, ze 'id' som nepovazoval za primary_key, 
     # z dovodu ze sa pre jednotlive objekty v test_data.json opakuje,
-    # napr. mame Image s id=3 , 2x
+    # napr. mame Image s id=3 je tam 2x
     if request.method == 'GET': 
         obj = select_obj(name)
         if obj == None:
@@ -86,6 +86,7 @@ def close_detail(request, name:str, id:int):
 
 def select_obj(name:str):
     '''Returns Object for specified request'''
+    # vyuzitie dict by skazilo citatelnost
     if name == "AttributeName":
         return AttributeName
     if name == 'AttributeValue':
