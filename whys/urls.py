@@ -23,4 +23,3 @@ urlpatterns = [
     path('detail/<str:name>', views.detail),
     path('detail/<str:name>/<int:id>', views.close_detail)
 ]
-

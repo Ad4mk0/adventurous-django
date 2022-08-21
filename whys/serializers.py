@@ -5,6 +5,7 @@ from .models import Image, Catalog, ProductImage, ProductAttributes
 
 ## Every serializer for specified model ##
 
+
 class AttributeNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = AttributeName

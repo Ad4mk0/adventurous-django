@@ -65,7 +65,7 @@ Go to the project directory
 The easiest and cleaniest way is just to,
 use docker:
 ```bash
-  docker compose up
+  docker-compose up
 ```
 
 or:
