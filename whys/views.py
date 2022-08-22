@@ -1,12 +1,10 @@
 from django.http import JsonResponse
 from .utils import select_obj, serialize
 
-from .serializers import AttributeNameSerializer, AttributeSerializer, AttributeValueSerializer
-from .serializers import CatalogSerializer, ImageSerializer, ProductAttributesSerializer
-from .serializers import ProductImageSerializer, ProductSerializer
-
 from rest_framework.decorators import api_view
 from rest_framework import status
+
+from sys import modules
 
 
 @api_view(['POST'])
@@ -16,24 +14,10 @@ def parser(request):
         for elem in request.data:
             [key] = elem.keys()
             [vals] = elem.values()
-
-            if key == 'AttributeName':
-                serializer = AttributeNameSerializer(data=vals)
-            elif key == 'AttributeValue':
-                serializer = AttributeValueSerializer(data=vals)
-            elif key == 'Attribute':
-                serializer = AttributeSerializer(data=vals)
-            elif key == 'Product':
-                serializer = ProductSerializer(data=vals)
-            elif key == 'Image':
-                serializer = ImageSerializer(data=vals)
-            elif key == 'Catalog':
-                serializer = CatalogSerializer(data=vals)
-            elif key == 'ProductImage':
-                serializer = ProductImageSerializer(data=vals)
-            elif key == 'ProductAttributes':
-                serializer = ProductAttributesSerializer(data=vals)
-            else:
+            try:
+                serializer = getattr(
+                    modules['whys.serializers'], key+"Serializer")(data=vals)
+            except:
                 return JsonResponse(data="Object to be inserted could not be recognized",
                                     status=status.HTTP_422_UNPROCESSABLE_ENTITY,
                                     safe=False)

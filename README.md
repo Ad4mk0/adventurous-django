@@ -8,7 +8,7 @@
 
 *test_data.json* som považoval za valídny vstup a tiež aj objekty tohoto json súboru za valídne. *id atribút* som u objektov nepovažoval za *primary_key*. 
 Využitá je základná *sqllite db* ktorá je súčasťou django framework, použitie Postgres by možno umožnilo krajšie ukladanie pomocou *ListField* a nie *JsonField*.
-Kód som písal na **Windows 10, Python 3.10.2** + venv -> docker, napriek tomu, som kvôli čitateľnosti ponechal *if statements* a nie *Match - Case* (zabijanie mravca Glock-om).
+Kód som písal na **Windows 10, Python 3.10.2** + venv -> docker, ~~napriek tomu, som kvôli čitateľnosti ponechal *if statements* a nie *Match - Case* (zabijanie mravca Glock-om)~~, getattr + sys pre lepšie škálovanie.
 
 
 ## API Reference
