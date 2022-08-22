@@ -4,6 +4,10 @@ from .utils import select_obj, serialize
 from rest_framework.decorators import api_view
 from rest_framework import status
 
+from .serializers import AttributeNameSerializer, AttributeSerializer, AttributeValueSerializer
+from .serializers import CatalogSerializer, ImageSerializer, ProductAttributesSerializer
+from .serializers import ProductImageSerializer, ProductSerializer
+
 from sys import modules
 
 
@@ -15,8 +19,7 @@ def parser(request):
             [key] = elem.keys()
             [vals] = elem.values()
             try:
-                serializer = getattr(
-                    modules['whys.serializers'], key+"Serializer")(data=vals)
+                serializer = getattr(modules['whys.serializers'], key+"Serializer")(data=vals)
             except:
                 return JsonResponse(data="Object to be inserted could not be recognized",
                                     status=status.HTTP_422_UNPROCESSABLE_ENTITY,
@@ -24,8 +27,7 @@ def parser(request):
 
             if serializer.is_valid():
                 serializer.save()
-            # else:
-            #     print(">>>>>>>", key)
+
         return JsonResponse(data="Success!",
                             status=status.HTTP_201_CREATED,
                             safe=False)
