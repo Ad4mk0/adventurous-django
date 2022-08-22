@@ -1,12 +1,12 @@
 from sys import modules
 
-
 def select_obj(name: str):
     '''Returns Object for specified request'''
     try:
         return getattr(modules['whys.models'], name)
     except:
         return None
+
 
 
 def serialize(name: str, que):
